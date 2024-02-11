@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { Container } from '../../style';
 
-const FetchPost = () => {
+const FetchGet = () => {
     const [posts, setPosts] = useState([]);
     const [error, setError] = useState('');
 
@@ -21,8 +22,8 @@ const FetchPost = () => {
     }, []);
 
     return (
-        <div>
-            <h1>Post fetch API</h1>
+        <Container>
+            <h1>GET fetch API</h1>
             {error ? (
                 <p>Erro: {error}</p>
             ) : (
@@ -33,8 +34,8 @@ const FetchPost = () => {
                     </div>
                 ))
             )}
-        </div>
+        </Container>
     );
 };
 
-export default FetchPost;
+export default FetchGet;

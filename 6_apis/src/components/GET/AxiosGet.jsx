@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Container } from '../../style';
 
-const AxiosPost = () => {
+const AxiosGet = () => {
     const [posts, setPosts] = useState([]);
     const [error, setError] = useState('');
 
@@ -21,8 +22,8 @@ const AxiosPost = () => {
     }, []);
 
     return (
-        <div>
-            <h1>Post Axios API</h1>
+        <Container>
+            <h1>GET Axios API</h1>
             {error ? (
                 <p>Erro: {error}</p>
             ) : (
@@ -33,8 +34,8 @@ const AxiosPost = () => {
                     </div>
                 ))
             )}
-        </div>
+        </Container>
     );
 };
 
-export default AxiosPost;
+export default AxiosGet;
