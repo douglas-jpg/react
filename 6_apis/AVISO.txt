@@ -1,0 +1,1 @@
+So funciona a parte do axios e se for criar aum post as opções de delete e edit não funcionam
