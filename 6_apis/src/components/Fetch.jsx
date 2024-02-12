@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { Container } from '../../style';
-import FetchUpdate from '../UPDATE/FetchUpdate';
+import { Container } from '../style';
+import FetchGetPost from './FetchGetPost';
 import PostForm from './PostForm';
 
-const FetchPost = () => {
+const Fetch = () => {
     const [post, setPost] = useState({ post: '', status: '' });
+    const [selectedPost, setSelectedPost] = useState(null);
+    const [isEditing, setIsEditing] = useState(false);
 
     const handleSubmit = async (newPost) => {
         try {
@@ -25,13 +27,26 @@ const FetchPost = () => {
         }
     };
 
+    const handleEdit = (post) => {
+        if (post == 'cancel') {
+            setSelectedPost(null);
+            setIsEditing(false);
+        } else {
+            setSelectedPost(post);
+            setIsEditing(true);
+        }
+    };
+
     return (
         <Container>
-            <h1>POST fetch API</h1>
-            <PostForm handleSubmit={handleSubmit} />
-            <FetchUpdate onSuccess={post} />
+            <h1>Fetch API</h1>
+            {isEditing && (
+                <button onClick={() => handleEdit('cancel')}>Cancelar</button>
+            )}
+            <PostForm handleSubmit={handleSubmit} postEdit={selectedPost} />
+            <FetchGetPost onSuccess={post} onEdit={handleEdit} />
         </Container>
     );
 };
 
-export default FetchPost;
+export default Fetch;

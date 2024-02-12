@@ -1,13 +1,25 @@
 // PostForm.jsx
-import { useState } from 'react';
-import { FormContainer } from '../../style';
+import { useEffect, useState } from 'react';
+import { FormContainer } from '../style';
 
-const PostForm = ({ handleSubmit }) => {
+const PostForm = ({ handleSubmit, postEdit }) => {
     const [formData, setFormData] = useState({
-        title: '',
-        body: '',
+        title: postEdit?.title || '',
+        body: postEdit?.body || '',
         id: Math.floor(Math.random() * 20),
     });
+
+    useEffect(() => {
+        if (postEdit) {
+            setFormData({
+                ...formData,
+                title: postEdit.title,
+                body: postEdit.body,
+            });
+            handleSubmit(formData, true);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [postEdit]);
 
     const handleChange = (e) => {
         setFormData({
@@ -18,11 +30,11 @@ const PostForm = ({ handleSubmit }) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        handleSubmit(formData);
+        handleSubmit(formData, false);
         setFormData({
             title: '',
             body: '',
-            id: Math.floor(Math.random() * 10),
+            id: Date.now(),
         });
     };
 

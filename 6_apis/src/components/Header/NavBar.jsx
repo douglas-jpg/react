@@ -5,7 +5,7 @@ import { Wrapper } from '../../style';
 const NavBar = () => {
     return (
         <Wrapper>
-            <Item fetch={'fetchPost'} axios={'axiosPost'} method={'Post'} />
+            <Item fetch={'fetch'} axios={'axios'} />
         </Wrapper>
     );
 };
