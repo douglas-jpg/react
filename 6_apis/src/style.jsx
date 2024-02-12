@@ -3,11 +3,12 @@ import styled from 'styled-components';
 export const ContainerItems = styled.div`
     display: flex;
     flex-direction: column;
-    max-width: 250px;
+    min-width: 300px;
     padding: 10px;
     margin: 20px;
 
     text-align: center;
+    font-size: 1.5rem;
 
     border: 1px solid rgba(255, 255, 255, 0.87);
     border-radius: 5px;
@@ -17,6 +18,10 @@ export const ContainerItems = styled.div`
         display: flex;
         gap: 20px;
         justify-content: center;
+    }
+
+    & h2 {
+        font-size: 1.5rem;
     }
 `;
 
@@ -31,6 +36,7 @@ export const Container = styled.div`
 
     & button {
         color: rgba(255, 255, 255, 0.87);
+        margin-right: 20px;
     }
 `;
 
