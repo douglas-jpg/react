@@ -3,6 +3,7 @@ import ContadorInterval from './components/ContadorInterval';
 import Counter from './components/Counter';
 import FormularioLogin from './components/FormularioLogin';
 import HelloWorld from './components/HelloWorld';
+import ListaDeCompras from './components/ListaDeCompras';
 import TextInput from './components/TextInput';
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
             <ContadorInterval />
             <hr />
             <FormularioLogin />
+            <hr />
+            <ListaDeCompras />
         </>
     );
 }

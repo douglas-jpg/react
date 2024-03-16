@@ -7,6 +7,7 @@ type dataUser = {
 
 const FormularioLogin = () => {
     const [user, setUser] = useState<dataUser>({ name: '', password: '' });
+    const [ver, setVer] = useState<boolean>(false);
 
     const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUser({ ...user, name: e.target.value });
@@ -16,7 +17,7 @@ const FormularioLogin = () => {
         setUser({ ...user, password: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
         alert('O nome de usuario é: ' + user.name);
@@ -36,12 +37,15 @@ const FormularioLogin = () => {
             <br />
             <label htmlFor='senha'>Senha: </label>
             <input
-                type='password'
+                type={ver ? 'text' : 'password'}
                 placeholder='Digite sua senha'
                 id='senha'
                 required
                 onChange={handleChangePassword}
             />
+            <button type='button' onClick={() => setVer(!ver)}>
+                Ver senha
+            </button>
             <br />
             <button type='submit'>Login</button>
         </form>
